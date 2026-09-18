@@ -1,0 +1,9 @@
+# This directory holds a full config backup (configs/) with real secrets:
+# SSH private keys, SMB passwords (.smbcredentials*), Steam login tokens,
+# Claude session transcripts, etc. Ignore everything by default and only
+# explicitly allow files that have been reviewed as safe to publish.
+*
+
+# Explicitly allowed (reviewed — no secrets, no hardcoded passwords)
+!.gitignore
+!bootstrap.sh
