@@ -1,0 +1,17 @@
+# ai-usagebar — feeds the noctalia "felipeartur/ai-usagebar" bar widget.
+# Docs: https://github.com/akitaonrails/ai-usagebar/blob/main/docs/configuration.md
+# Claude uses the Claude Code login in ~/.claude/.credentials.json.
+
+[openai]
+enabled = false   # no Codex login on this machine
+
+[zai]
+enabled = false
+
+[openrouter]
+enabled = false
+
+# Recent Claude Code sessions and how full their context windows are,
+# shown on the Claude entry (bar panel) and in ai-usagebar-tui (press c).
+[context]
+enabled = true

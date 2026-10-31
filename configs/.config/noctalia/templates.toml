@@ -1,0 +1,6 @@
+# App theming — https://docs.noctalia.dev/noctalia/theming/app-theming/
+#
+# Hybrid setup: noctalia's own templates only theme umbriel's borders (from the
+# MacDark shell palette). Neovim, Spotify (Spicetify Comfy), Obsidian and cava
+# follow the *wallpaper* instead; hooks/wallpaper-theme.py renders them from
+# the template files in templates/ whenever the wallpaper changes.

@@ -141,7 +141,7 @@ confine_pointer = true
 # Layer rules
 # https://docs.noctalia.dev/umbriel/layer-rules/
 [[layer_rule]]
-match.namespace = "^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd|desktop-widget-[^\"]*)$"
+match.namespace = "^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"  # desktop widgets excluded so the clock text stays see-through
 blur = true
 blur_ignore_alpha = 0.5
 blur_popups = true

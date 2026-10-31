@@ -15,3 +15,11 @@
 !configs/.config/
 !configs/.config/umbriel/
 !configs/.config/umbriel/**
+
+# noctalia shell config (reviewed: no secrets; services.toml holds a ZIP code
+# for weather, hooks name the Obsidian vault paths). plugins/ is third-party
+# code installed via noctalia's plugin manager, so it is not committed.
+!configs/.config/noctalia/
+!configs/.config/noctalia/**
+!configs/.config/ai-usagebar/
+!configs/.config/ai-usagebar/**

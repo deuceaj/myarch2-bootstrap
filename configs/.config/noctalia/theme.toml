@@ -1,0 +1,7 @@
+# Mac-style dark graphite theme (palettes/MacDark.json: macOS dark-mode
+# greys with system-blue accent). To go back to wallpaper colors:
+#   source = "wallpaper"
+[theme]
+mode           = "dark"
+source         = "custom"
+custom_palette = "MacDark"

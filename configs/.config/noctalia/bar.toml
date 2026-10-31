@@ -1,0 +1,74 @@
+# Noctalia bar — Mac-style menu bar: thin, full width, near-opaque graphite.
+# The previous "island" layout is saved in layouts/bar-island.toml
+# (copy it over this file to switch back).
+# https://docs.noctalia.dev/noctalia/bar/
+
+[bar]
+order = ["default"]
+
+[bar.default]
+position             = "top"
+thickness            = 30
+margin_ends          = 0       # full width
+margin_edge          = 0
+concave_edge_corners = false
+radius               = 0
+background_opacity   = 0.96    # nearly solid dark grey, like Glimpse/macOS
+compositor_blur      = true
+shadow               = false
+border_width         = 0.0
+capsule              = false
+padding              = 12
+widget_spacing       = 12
+font_weight          = 500
+
+start  = ["launcher", "workspaces", "active_window"]
+center = ["weather", "clock", "notifications"]   # Glimpse-style centered date/time
+end    = ["tray", "bluetooth", "volume", "control-center"]
+
+# Portrait monitor (HDMI-A-1, 1080 px wide): workspaces, clock, and the
+# system/Claude stats that live off the main bar.
+[bar.default.monitor.portrait]
+match  = "HDMI-A-1"
+start  = ["workspaces"]
+center = ["clock"]
+end    = ["cpu", "temp", "claude_usage", "volume"]
+
+# ─── Widgets ───────────────────────────────────────────────────────────────
+
+[widget.cpu]
+type = "sysmon"
+stat = "cpu_usage"
+
+[widget.temp]
+type = "sysmon"
+stat = "cpu_temp"
+
+[widget.weather]
+show_condition   = false
+show_temperature = true
+
+# Glimpse-style workspace dots: small dots for other workspaces; the current
+# one is a slightly longer pill showing its number. Monochrome so it never
+# follows the wallpaper.
+[widget.workspaces]
+style              = "focus_hint"
+show_labels        = true    # focus_hint labels only the current workspace
+show_icons         = false
+label_source       = "name"  # 1-6 / 7-0
+active_pill_size   = 2.2
+focused_color      = "secondary"   # light grey pill + dark number (MacDark secondary is neutral)
+occupied_color     = "on_surface_variant"
+empty_color        = "surface_container_highest"
+urgent_color       = "error"
+
+[widget.clock]
+format         = "{:%a %b %-d  %-I:%M %p}"
+tooltip_format = "{:%A, %B %d, %Y}"
+
+# Claude plan usage (felipeartur/ai-usagebar plugin; needs the ai-usagebar CLI).
+[widget.claude_usage]
+type          = "felipeartur/ai-usagebar:bar"
+vendor        = "anthropic"
+visualization = "gauge"
+extras        = "both"

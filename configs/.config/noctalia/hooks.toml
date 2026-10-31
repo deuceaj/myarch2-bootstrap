@@ -1,0 +1,6 @@
+# Noctalia hooks — https://docs.noctalia.dev/noctalia/automation/hooks/
+# Hybrid wallpaper theming (shell accent, app themes, visualizer colors):
+# see hooks/wallpaper-theme.py. Runs on wallpaper change and once at startup.
+[hooks]
+wallpaper_changed = "/home/deuce/.config/noctalia/hooks/wallpaper-theme.py"
+started           = "/home/deuce/.config/noctalia/hooks/wallpaper-theme.py"

@@ -1,0 +1,70 @@
+# Noctalia bar — "island" layout: inset bar docked to the top edge with
+# concave flared corners, status grouped in the center.
+# https://docs.noctalia.dev/noctalia/bar/
+
+[bar]
+order = ["default"]
+
+[bar.default]
+position             = "top"
+thickness            = 34
+margin_ends          = 260    # inset from each screen end (ultrawide is 2752 logical px)
+margin_edge          = 0      # docked to the top edge (required for concave corners)
+concave_edge_corners = true   # corners touching the screen edge flare outward
+radius               = 14
+background_opacity   = 0.85
+compositor_blur      = true
+shadow               = true
+capsule              = false
+padding              = 14
+widget_spacing       = 10
+font_weight          = 500
+
+start  = ["annotate", "screenshot", "wallpaper"]
+center = ["temp", "weather", "workspaces", "volume", "bluetooth", "tray"]
+end    = ["claude_usage", "date", "clock", "notifications"]
+
+# Portrait monitor (1080 px wide): smaller inset, fewer widgets.
+[bar.default.monitor.portrait]
+match       = "HDMI-A-1"
+margin_ends = 40
+start       = []
+center      = ["workspaces", "volume", "tray"]
+end         = ["clock", "notifications"]
+
+# ─── Widgets ───────────────────────────────────────────────────────────────
+
+[widget.annotate]
+type    = "custom_button"
+glyph   = "pencil"
+tooltip = "Draw on screen"
+[widget.annotate.actions]
+left = "annotate"
+
+[widget.temp]
+type = "sysmon"
+stat = "cpu_temp"
+
+[widget.weather]
+show_condition   = false
+show_temperature = true
+
+[widget.workspaces]
+style        = "regular"
+label_source = "name"   # show 1-6 / 7-0 like the umbriel workspace names
+
+[widget.date]
+type   = "clock"
+format = "{:%a, %b %d}"
+
+[widget.clock]
+format         = "{:%H:%M}"
+tooltip_format = "{:%A, %B %d, %Y}"
+
+# Claude plan usage (felipeartur/ai-usagebar plugin; needs the ai-usagebar CLI).
+# Left click: usage panel. Right click: refresh. Reads ~/.claude OAuth login.
+[widget.claude_usage]
+type          = "felipeartur/ai-usagebar:bar"
+vendor        = "anthropic"
+visualization = "gauge"
+extras        = "both"     # reset countdown + pace

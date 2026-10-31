@@ -1,0 +1,45 @@
+# Noctalia desktop widgets on the ultrawide (DP-1 is 2752x1152 logical).
+# Fine-tune positions with `noctalia msg desktop-widgets-edit` (drag, then
+# Done); the editor saves its changes to ~/.local/state/noctalia/settings.toml.
+# https://docs.noctalia.dev/noctalia/desktop/widgets/
+
+[desktop_widgets]
+enabled        = true
+schema_version = 2
+widget_order   = ["audio_bars", "clock_main"]
+
+# Plain 12-hour clock text, white at 50% opacity, no card behind it.
+# Centered left-to-right, 15% down from the top (1152 * 0.15 = 173).
+# The text scales with the box: 512x132 is twice the 256x66 auto-fit size.
+[desktop_widgets.widget.clock_main]
+type       = "clock"
+output     = "DP-1"
+cx         = 1376.0
+cy         = 173.0
+box_width  = 512.0
+box_height = 132.0
+[desktop_widgets.widget.clock_main.settings]
+clock_style = "digital"
+format      = "{:%-I:%M %p}"
+color       = "#ffffff80"   # white, 50% opacity (80 = 128/255)
+center_text = true
+background  = false
+shadow      = false  # a solid shadow under the text blocks the wallpaper
+
+# Spectrum bars along the bottom: 80% of the screen width (2202 px),
+# 10% of its height (115 px), centered.
+[desktop_widgets.widget.audio_bars]
+type       = "audio_visualizer"
+output     = "DP-1"
+cx         = 1376.0
+cy         = 1094.0
+box_width  = 2202.0
+box_height = 115.0
+[desktop_widgets.widget.audio_bars.settings]
+bands          = 96
+mirrored       = true
+centered       = false
+show_when_idle = false
+color_1        = "primary"
+color_2        = "secondary"
+background     = false

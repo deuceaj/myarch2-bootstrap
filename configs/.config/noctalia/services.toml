@@ -1,0 +1,10 @@
+# Noctalia services: location (feeds weather, night light, theme auto) and weather.
+# https://docs.noctalia.dev/noctalia/services/location/
+
+[location]
+auto_locate = false
+address     = "30342, USA"   # Atlanta (Sandy Springs), GA
+
+[weather]
+enabled = true
+unit    = "imperial"         # °F
