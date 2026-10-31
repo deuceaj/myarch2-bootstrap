@@ -1,0 +1,5 @@
+# Mac-style dock: auto-hidden and slides up over windows instead of reserving
+# a 64px strip at the bottom of every monitor.
+[dock]
+auto_hide     = true
+reserve_space = false

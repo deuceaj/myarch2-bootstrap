@@ -3,7 +3,8 @@
 
 1. Shell accent: the bar/menus keep the MacDark graphite + white palette, but
    its accent (primary) becomes the wallpaper's most prominent vivid color.
-2. Apps: Neovim, Spotify (Spicetify Comfy), Obsidian and cava get a full
+2. Apps: Neovim, Spotify (Spicetify Comfy), Obsidian, cava, Thunar and
+   VSCode get a full
    palette generated from the wallpaper (`noctalia theme <image> --render`).
    These apps are deliberately NOT in noctalia's own template lists, so the
    two never write the same files.
@@ -34,6 +35,10 @@ APP_TEMPLATES = [
     ("neovim-matugen.lua", f"{HOME}/.config/nvim/lua/matugen.lua"),
     ("spicetify-comfy.ini", f"{HOME}/.config/spicetify/Themes/Comfy/color.ini"),
     ("cava.ini", f"{HOME}/.config/cava/themes/noctalia"),
+    # Thunar only (scoped to window.thunar); imported at the top of gtk-3.0/gtk.css.
+    ("thunar.css", f"{HOME}/.config/gtk-3.0/noctalia-thunar.css"),
+    # VSCode: overwrites the NoctaliaTheme extension's color theme file.
+    ("vscode.json", f"{HOME}/.vscode/extensions/noctalia.noctaliatheme-0.0.5/themes/NoctaliaTheme-color-theme.json"),
 ] + [("obsidian.css", f"{v}/.obsidian/snippets/noctalia.css") for v in OBSIDIAN_VAULTS]
 
 

@@ -1,0 +1,8 @@
+# Colors come from noctalia's built-in cava template (themes/noctalia),
+# regenerated whenever the wallpaper palette changes.
+
+[general]
+live-config = 1
+
+[color]
+theme = "noctalia"

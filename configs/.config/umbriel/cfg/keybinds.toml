@@ -72,6 +72,16 @@
 "Mod+Shift+Down" = "window-move-down"
 "Mod+Shift+Up" = "window-move-up"
 "Mod+Shift+Right" = "column-move-right"
+# Free move, overriding centering: floats the window in place and moves it
+# 5% per press (add Shift for 1%). Mod+T re-tiles it, centered again.
+"Mod+Alt+Left" = "spawn /home/deuce/.config/umbriel/scripts/nudge.py left"
+"Mod+Alt+Right" = "spawn /home/deuce/.config/umbriel/scripts/nudge.py right"
+"Mod+Alt+Up" = "spawn /home/deuce/.config/umbriel/scripts/nudge.py up"
+"Mod+Alt+Down" = "spawn /home/deuce/.config/umbriel/scripts/nudge.py down"
+"Mod+Alt+Shift+Left" = "spawn /home/deuce/.config/umbriel/scripts/nudge.py left 0.01"
+"Mod+Alt+Shift+Right" = "spawn /home/deuce/.config/umbriel/scripts/nudge.py right 0.01"
+"Mod+Alt+Shift+Up" = "spawn /home/deuce/.config/umbriel/scripts/nudge.py up 0.01"
+"Mod+Alt+Shift+Down" = "spawn /home/deuce/.config/umbriel/scripts/nudge.py down 0.01"
 "Mod+Ctrl+Home" = "column-move-to-first"
 "Mod+Ctrl+End" = "column-move-to-last"
 "Mod+Ctrl+Shift+WheelDown" = "column-move-right"
@@ -83,15 +93,24 @@
 "Mod+Shift+Ctrl+Up" = "column-move-to-output-up"
 "Mod+Shift+Ctrl+Down" = "column-move-to-output-down"
 
-# Resize: deltas are fractions of the output (0.1 = 10%)
-"Mod+Ctrl+Left" = "window-modify-width-right -0.1"
-"Mod+Ctrl+Right" = "window-modify-width-right 0.1"
-"Mod+Ctrl+Up" = "window-modify-height-down -0.1"
-"Mod+Ctrl+Down" = "window-modify-height-down 0.1"
-"Mod+Minus" = "window-modify-width-right -0.1"
-"Mod+Equal" = "window-modify-width-right 0.1"
-"Mod+Shift+Minus" = "window-modify-height-down -0.1"
-"Mod+Shift+Equal" = "window-modify-height-down 0.1"
+# Resize: deltas are fractions of the output (0.05 = 5%)
+"Mod+Ctrl+Left" = "window-modify-width-right -0.05"
+"Mod+Ctrl+Right" = "window-modify-width-right 0.05"
+"Mod+Ctrl+Up" = "window-modify-height-down -0.05"
+"Mod+Ctrl+Down" = "window-modify-height-down 0.05"
+"Mod+Minus" = "window-modify-width-right -0.05"
+"Mod+Equal" = "window-modify-width-right 0.05"
+"Mod+Shift+Minus" = "window-modify-height-down -0.05"
+"Mod+Shift+Equal" = "window-modify-height-down 0.05"
+# Fine-tune: add Alt to any resize bind for 1% steps
+"Mod+Ctrl+Alt+Left" = "window-modify-width-right -0.01"
+"Mod+Ctrl+Alt+Right" = "window-modify-width-right 0.01"
+"Mod+Ctrl+Alt+Up" = "window-modify-height-down -0.01"
+"Mod+Ctrl+Alt+Down" = "window-modify-height-down 0.01"
+"Mod+Alt+Minus" = "window-modify-width-right -0.01"
+"Mod+Alt+Equal" = "window-modify-width-right 0.01"
+"Mod+Alt+Shift+Minus" = "window-modify-height-down -0.01"
+"Mod+Alt+Shift+Equal" = "window-modify-height-down 0.01"
 "Mod+Shift+C" = "column-center"
 
 # Window state

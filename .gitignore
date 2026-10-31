@@ -23,3 +23,16 @@
 !configs/.config/noctalia/**
 !configs/.config/ai-usagebar/
 !configs/.config/ai-usagebar/**
+
+# App configs themed by noctalia's wallpaper hook (reviewed: no secrets).
+# Generated color files are not copied in: nvim/lua/matugen.lua,
+# cava/themes/noctalia, Spicetify's Comfy theme (third-party, re-clone it).
+!configs/.config/nvim/
+!configs/.config/nvim/**
+!configs/.config/kitty/
+!configs/.config/kitty/**
+!configs/.config/spicetify/
+!configs/.config/spicetify/config-xpui.ini
+!configs/.config/cava/
+!configs/.config/cava/**
+configs/.config/cava/themes/noctalia
