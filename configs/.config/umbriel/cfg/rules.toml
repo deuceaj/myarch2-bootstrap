@@ -1,0 +1,177 @@
+# Umbriel — Window rules, layer rules & scratchpads
+# Included from ../config.toml
+
+# ==============================================================================
+# Window rules
+# Rules combine in order, with later values overriding earlier ones.
+# https://docs.noctalia.dev/umbriel/window-rules/
+
+# Blur windows over the cached wallpaper blur. Set blur_optimized = false to
+# include overlapping windows behind them, at a GPU cost on every frame that
+# moves anything behind them.
+[[window_rule]]
+blur = true
+
+[[window_rule]]
+match.app_id = "^dev.noctalia.Noctalia$"
+default_floating = true
+default_floating_size_px = { width = 1020, height = 900 }
+
+[[window_rule]]
+match.app_id = "^dev.noctalia.UmbrielSharePicker$"
+default_floating = true
+default_floating_size_px = { width = 800, height = 600 }
+
+[[window_rule]]
+match.title = "^(Picture-in-Picture|Picture in picture)$"
+default_floating = true
+default_maximize = false
+default_position = { x = 20, y = 20, anchor = "bottom_right" }
+
+[[window_rule]]
+match.title = "^notificationtoasts_.+_desktop"
+default_position = { x = 0, y = 0, anchor = "bottom_right" }
+default_focused = false
+default_pinned = true
+
+# ==============================================================================
+# Ported from niri cfg/rules.kdl
+
+# Translucent apps (blur is already on for every window above)
+[[window_rule]]
+match.app_id = ["^com[.]microsoft[.]VSCode$", "^code$", "^thunar$", "^Thunar$", "^kitty$"]
+opacity = 0.75
+
+[[window_rule]]
+match.app_id = ["^com[.]anthropic[.]Claude$", "^md[.]obsidian[.]Obsidian$", "^obsidian$"]
+opacity = 0.75
+
+# Steam: every window floats except the main client window
+[[window_rule]]
+match.app_id = "^steam$"
+default_floating = true
+
+[[window_rule]]
+match.app_id = "^steam$"
+match.title = "^[Ss]team$"
+default_floating = false
+
+# File open/save/upload dialogs: centered floating popup
+[[window_rule]]
+match.app_id = "^xdg-desktop-portal-(gnome|gtk|kde)$"
+default_floating = true
+default_floating_size = { width = 0.5, height = 0.6 }
+
+[[window_rule]]
+match.title = [
+  "^(Open|Save|Choose|Select|Export|Import)( a| an)?( Files?| Folders?| Images?| Documents?| As| Location| Directory)?( …|[.][.][.])?$",
+  "^File Upload$",
+]
+default_floating = true
+default_floating_size = { width = 0.5, height = 0.6 }
+
+# Sports dashboard (Chrome web app): fullscreen on workspace 9 (portrait)
+[[window_rule]]
+match.app_id = "^chrome-100[.]108[.]111[.]110__-Default$"
+default_workspace = "9"
+default_fullscreen = true
+
+# Keep game menus inside their window; a focus or workspace keybind releases
+# the pointer (e.g. Mod+7..0 jumps to the portrait monitor for a game guide).
+[[window_rule]]
+match.app_id = "^steam_app_.*$"
+confine_pointer = true
+
+# Keep compositor shortcuts available while a virtual machine window is focused.
+# [[window_rule]]
+# match.app_id = "^virt-manager$"
+# allow_shortcuts_inhibit = false
+
+# Keep an application drawing while it is hidden on another workspace, for programs whose other work stalls without it.
+# [[window_rule]]
+# match.app_id = "^obs$"
+# background_render = true
+
+# Keep matching windows visible locally but absent from screenshots and recordings.
+# See docs/user/window-rules.md#capture-protection.
+# [[window_rule]]
+# match.app_id = "^private-app$"
+# block_capture = true
+
+# Keep one application's modal dialogs as ordinary windows.
+# [[window_rule]]
+# match.app_id = "^gimp"
+# match.is_dialog = true
+# attach_to_parent = false
+
+# Named scratchpads can launch an application when toggled while empty.
+# [[scratchpad]]
+# name = "music"
+# spawn_when_empty = "spotify"
+
+# [[window_rule]]
+# match.app_id = "^spotify$"
+# default_scratchpad = "music"
+
+# Give scratchpad windows their own border colors.
+# [[window_rule]]
+# match.is_scratchpad = true
+# border_color_focused = "#E5C07BFF"
+# border_color_unfocused = "#5C4A2AFF"
+
+# Hide enabled title bars only while a window is maximized to edges.
+# [[window_rule]]
+# match.is_maximized_to_edges = true
+# title_bar = "off"
+
+# Frame the window being screencast; viewers never see the frame.
+# [[window_rule]]
+# match.is_cast_target = true
+# border_color_focused = "#40C057FF"
+# border_color_unfocused = "#40C057FF"
+
+# Leave an application that draws its own corners and shadow undecorated.
+# [[window_rule]]
+# match.app_id = "^org[.]gnome[.]TextEditor$"
+# border_width = 0
+# corner_radius = 0
+# shadow = false
+
+# ==============================================================================
+# Layer rules
+# https://docs.noctalia.dev/umbriel/layer-rules/
+[[layer_rule]]
+match.namespace = "^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd|desktop-widget-[^\"]*)$"
+blur = true
+blur_ignore_alpha = 0.5
+blur_popups = true
+
+# Panels, the dock, notifications and OSDs open over windows, so they blur the
+# live content behind them. The bar and desktop widgets sit on the wallpaper and
+# keep the cached wallpaper blur.
+[[layer_rule]]
+match.namespace = "^noctalia-(notification|dock|panel|attached-panel|osd)$"
+blur_optimized = false
+
+# ==============================================================================
+# Portrait monitor startup stack (workspace 7 on HDMI-A-1)
+# Opened in order by scripts/portrait-startup.sh; heights are fractions of the
+# portrait screen (umbriel's minimum is 0.1). Replaces niri's
+# right-monitor-startup.sh (60/5/35).
+[[window_rule]]
+match.app_id = "^Spotify$"
+default_workspace = "7"
+default_scrolling_extent = 0.6
+default_focused = false
+
+[[window_rule]]
+match.app_id = "^cava$"
+default_workspace = "7"
+default_scrolling_extent = 0.1
+default_focused = false
+
+[[window_rule]]
+match.app_id = "^org[.]corectrl[.]CoreCtrl$"
+default_workspace = "7"
+default_scrolling_extent = 0.3
+default_focused = false

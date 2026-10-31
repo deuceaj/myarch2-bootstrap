@@ -1,0 +1,30 @@
+# ────────────── Output Configuration ──────────────
+# Ported from niri cfg/display.kdl + cfg/workspaces.kdl.
+# Run `umbriel outputs` to verify names/modes.
+# https://docs.noctalia.dev/umbriel/outputs/
+# https://docs.noctalia.dev/umbriel/workspaces/
+
+# Samsung 34" ultrawide — main monitor, tiling workspaces 1-6
+# 3440x1440 @ 1.25 scale = 2752x1152 logical
+[output.DP-1]
+mode = "3440x1440@59.973"
+position = [0, 0]
+scale = 1.25
+focus_at_startup = true
+workspaces = ["1", "2", "3", "4", "5", "6"]
+
+# Dell 24" — portrait, right of the ultrawide, workspaces 7-0.
+# A horizontal workspace axis turns the scrolling strip vertical: each new
+# window opens full-width below the last, so windows stack top to bottom
+# (replaces niri's portrait-stack.sh).
+[output.HDMI-A-1]
+mode = "1920x1080@60"
+position = [2752, 0]
+scale = 1.0
+transform = "90"
+workspaces = ["7", "8", "9", "0"]
+workspace_axis = "horizontal"
+
+# Height of each new stacked window (fraction of the screen).
+[output.HDMI-A-1.layout.scrolling]
+default_extent_fraction = 0.5

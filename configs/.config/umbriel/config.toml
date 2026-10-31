@@ -1,0 +1,22 @@
+# Umbriel configuration
+#
+# Split into topic files under cfg/. Most changes apply when a file is saved.
+# Check edits with `umbriel config validate`.
+#
+# Complete reference: https://docs.noctalia.dev/umbriel/
+
+# Included files apply in list order; tables merge by key, and rule lists
+# such as [[window_rule]] collect entries from every file.
+# https://docs.noctalia.dev/umbriel/configuration/#include
+[include]
+files = [
+  "cfg/general.toml",    # [general], events, screencast, input
+  "cfg/outputs.toml",    # monitors
+  "cfg/appearance.toml", # blur, title bars, colors, effects, animation, hot corners
+  "cfg/layout.toml",     # scrolling/dwindle/master, tabs
+  "cfg/keybinds.toml",   # [keybinds]
+  "cfg/rules.toml",      # window rules, layer rules, scratchpads
+]
+
+[include.optional]
+files = ["noctalia.toml"]

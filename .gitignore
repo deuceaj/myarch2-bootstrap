@@ -7,3 +7,11 @@
 # Explicitly allowed (reviewed — no secrets, no hardcoded passwords)
 !.gitignore
 !bootstrap.sh
+
+# umbriel compositor config (reviewed: no secrets; contains LAN/Tailscale IPs
+# in Remmina profile names and a Bluetooth speaker MAC). Generated
+# noctalia.toml and *.bak* files are not copied in.
+!configs/
+!configs/.config/
+!configs/.config/umbriel/
+!configs/.config/umbriel/**
