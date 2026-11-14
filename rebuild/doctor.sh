@@ -87,9 +87,10 @@ check "LXQt file dialog wired (portal conf)" grep -q 'FileChooser=lxqt' ~/.confi
 check "LXQt dialog theme drop-in" test -f ~/.config/systemd/user/xdg-desktop-portal-lxqt.service.d/qt6ct.conf
 check "noctalia generated qt6ct colours" test -f ~/.config/qt6ct/colors/noctalia.conf
 check "Bibata cursor installed" test -d /usr/share/icons/Bibata-Modern-Classic
-if [[ -f ~/.local/state/rebuild/mimeapps.list.expected ]]; then
-  check "default apps unchanged (not taken over by COSMIC)" cmp -s ~/.config/mimeapps.list ~/.local/state/rebuild/mimeapps.list.expected
-else skip "default apps (install.sh not run yet)"; fi
+# Only flag what matters: a COSMIC app becoming a default. Apps adding their
+# own link handlers (e.g. nordpass://) are normal and not reported.
+check "no COSMIC app took over a default" bash -c '! grep -q "com.system76.Cosmic" ~/.config/mimeapps.list'
+check "web links open in Firefox" bash -c '[[ $(xdg-mime query default x-scheme-handler/https) == firefox.desktop ]]'
 check "folders open in Thunar" bash -c '[[ $(xdg-mime query default inode/directory) == thunar.desktop ]]'
 
 section "Steam"
