@@ -13,7 +13,7 @@ thunar thunar-archive-plugin thunar-media-tags-plugin thunar-shares-plugin thuna
 tumbler ffmpegthumbnailer file-roller
 gvfs gvfs-smb gvfs-mtp gvfs-afc
 pavucontrol playerctl cava btop fastfetch eza ripgrep fd fzf glances mission-center duf baobab
-adw-gtk-theme papirus-icon-theme
+adw-gtk-theme orchis-theme papirus-icon-theme   # GTK = Orchis-Dark-Compact + Papirus-Dark
 ttf-jetbrains-mono-nerd noto-fonts noto-fonts-emoji ttf-liberation
 
 # ── kept GNOME bits (standalone apps) ──
@@ -37,7 +37,7 @@ bluez blueman
 
 # ── apps ──
 firefox chromium obsidian discord
-mpv vlc vlc-plugins-all yt-dlp okular foliate gimp gcolor3 sqlitebrowser
+mpv vlc vlc-plugins-all yt-dlp okular foliate gimp gcolor3
 neovim lazygit tree-sitter-cli nodejs npm python-pip python-pipx python-pillow rust cmake
 perl-image-exiftool
 jdk17-openjdk

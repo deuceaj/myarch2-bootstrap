@@ -4,11 +4,11 @@
 # ── desktop ──
 umbriel-git                       # compositor (pulls xdg-desktop-portal-umbriel-git)
 vicinae-bin                       # launcher (Alt+Space)
-trayscale                         # Tailscale tray icon
+# trayscale replaced 2026-11-14 by noctalia plugin rylos/tailnet (+ 3dprogramin/mullvad)
 # emote dropped 2026-11-13: AUR pkg broken (checksum); noctalia launcher has an emoji picker
 bibata-cursor-theme-bin           # cursor
 kora-icon-theme                   # icons (LXQt file dialog uses it)
-whitesur-gtk-theme
+# whitesur-gtk-theme removed 2026-11-14 (unused; GTK theme is Orchis)
 otf-sora ttf-symbola ttf-ms-fonts
 
 # ── hardware ──
@@ -30,7 +30,7 @@ czkawka-cli-bin
 ai-usagebar-bin
 ocs-url
 emudeck-bin
-wps-office                        # large download
+# wps-office removed 2026-11-14 (not used)
 
 # ── slow builds ──
 ryujinx-git                       # long .NET build

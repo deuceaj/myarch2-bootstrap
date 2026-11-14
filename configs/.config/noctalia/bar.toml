@@ -24,7 +24,7 @@ font_weight          = 500
 
 start  = ["launcher", "workspaces", "active_window"]
 center = ["weather", "clock", "notifications", "divider", "spotify", "audio_visualizer"]   # Glimpse-style centered date/time
-end    = ["remmina", "localsend", "tray", "bluetooth", "volume", "notes"]
+end    = ["remmina", "localsend", "tailnet", "mullvad", "tray", "bluetooth", "volume", "notes"]
 
 # Portrait monitor (HDMI-A-1, 1080 px wide): workspaces, system stats, and
 # pending Arch updates + Claude usage on the right.
@@ -129,6 +129,16 @@ type = "mera/localsend:widget"
 # Remmina profiles; also /rmn in the launcher.
 [widget.remmina]
 type = "rylos/remmina:bar"
+
+# Tailscale (rylos/tailnet, replaces Trayscale): online hosts with one-click
+# IP/name copy, connect/disconnect, exit nodes, Taildrop. Launcher: /ts-style
+# host search. Operator is already "deuce", so no sudo needed.
+[widget.tailnet]
+type = "rylos/tailnet:bar"
+
+# Mullvad VPN (3dprogramin/mullvad): connect by country, lockdown, multihop.
+[widget.mullvad]
+type = "3dprogramin/mullvad:status"
 
 # Plugin widgets defined but not placed on a bar yet; add a name to a
 # start/center/end list to show it.

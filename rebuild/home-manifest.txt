@@ -31,7 +31,6 @@
 .config/lxqt/
 .config/xsettingsd/
 .config/xdg-desktop-portal/
-.themes/
 .local/share/fonts/
 
 # ── COSMIC (Zoom session) ──

@@ -10,7 +10,6 @@
 autostart = [
   "noctalia",
   "vicinae server",
-  "trayscale --hide-window",
   "/home/deuce/.config/umbriel/scripts/bluetooth-reconnect.sh",
   "/home/deuce/.config/umbriel/scripts/portrait-startup.sh",
 ]
