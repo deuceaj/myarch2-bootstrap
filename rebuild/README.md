@@ -45,7 +45,7 @@ picked, and never formats anything. `--no-install` only sets up Epsilon.
 | Path | What |
 |---|---|
 | `/media/Epsilon/deuce/myarch2/` | this repo (same as GitHub) |
-| `/media/Epsilon/deuce/private/` | **private backup** (mode 700, never in git): `home/` settings + keys, `system/` /etc files, `steam/` library + GE-Proton, `info/` package & service lists |
+| `/media/Epsilon/deuce/private/` | **private backup** (mode 700, never in git): `home/` settings + keys, `system/` /etc files, `steam/` library + GE-Proton, `info/` package & service lists, `claude-chats/` every Claude chat (local + VPS + Kodus) |
 | `/media/Epsilon/deuce/{Documents,Downloads,Pictures,…}` | your home folders (linked from `~`) |
 | `/media/Epsilon/vm/rebuild-test/` | test VM disk, firmware vars, Arch ISO |
 | `/media/Epsilon/deuce/myarch/` | old CachyOS-era kit (legacy, not used) |

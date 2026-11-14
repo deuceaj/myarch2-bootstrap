@@ -82,6 +82,8 @@ systemctl list-unit-files --state=enabled --no-legend | awk '{print $1}' > "$PRI
 systemctl --user list-unit-files --state=enabled --no-legend | awk '{print $1}' > "$PRIVATE_DIR/info/services-user.txt"
 date -Iseconds > "$PRIVATE_DIR/info/snapshot-date.txt"
 
+"$REBUILD_DIR/backup-claude-chats.sh" || warn "Claude chats backup reported problems"
+
 chmod -R go-rwx "$PRIVATE_DIR"
 section "Done"
 log "Private snapshot: $(du -sh "$PRIVATE_DIR" | cut -f1) at $PRIVATE_DIR (mode 700)"
