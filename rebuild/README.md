@@ -30,12 +30,25 @@ install_pacman install_aur system_files boot_config drives greeter home_restore 
 - Kernel: linux · Network: NetworkManager · Optional repos: **multilib**
 
 ## After archinstall (real machine)
+In COSMIC's terminal:
 ```bash
-sudo mkdir -p /media/Epsilon && sudo mount UUID=91e23279-79fe-4500-a491-1878037460cf /media/Epsilon
-/media/Epsilon/deuce/myarch2/rebuild/install.sh
+sudo pacman -S --needed git
+git clone https://github.com/deuceaj/myarch2-bootstrap.git ~/myarch2
+~/myarch2/bootstrap.sh        # adds Epsilon to fstab + mounts it, then offers install.sh
 # reboot → noctalia login screen → Umbriel
-/media/Epsilon/deuce/myarch2/rebuild/first-login.sh
+~/myarch2/rebuild/first-login.sh
 ```
+`bootstrap.sh` finds Epsilon by UUID (or the btrfs label "Epsilon"), shows which disk it
+picked, and never formats anything. `--no-install` only sets up Epsilon.
+
+## Where everything lives on Epsilon
+| Path | What |
+|---|---|
+| `/media/Epsilon/deuce/myarch2/` | this repo (same as GitHub) |
+| `/media/Epsilon/deuce/private/` | **private backup** (mode 700, never in git): `home/` settings + keys, `system/` /etc files, `steam/` library + GE-Proton, `info/` package & service lists |
+| `/media/Epsilon/deuce/{Documents,Downloads,Pictures,…}` | your home folders (linked from `~`) |
+| `/media/Epsilon/vm/rebuild-test/` | test VM disk, firmware vars, Arch ISO |
+| `/media/Epsilon/deuce/myarch/` | old CachyOS-era kit (legacy, not used) |
 
 ## Test in the VM first
 On Primus:
