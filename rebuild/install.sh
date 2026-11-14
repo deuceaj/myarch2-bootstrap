@@ -90,6 +90,13 @@ system_files() {
   install_root_file "$SYS/usr/local/bin/sonix-keypad-kick"               /usr/local/bin/sonix-keypad-kick 0755
   # greetd PAM file = stock + gnome-keyring lines (unlocks the keyring at login)
   install_root_file "$SYS/etc/pam.d/greetd"                              /etc/pam.d/greetd
+  # Mullvad preferences (auto-connect, LAN sharing — needed for Tailscale —,
+  # relay choice). Only settings.json: you sign in fresh, so no device keys
+  # are cloned. The daemon must be stopped or it overwrites the file.
+  if [[ -f "$SYS/etc/mullvad-vpn/settings.json" ]]; then
+    sudo systemctl stop mullvad-daemon 2>/dev/null || true
+    install_root_file "$SYS/etc/mullvad-vpn/settings.json" /etc/mullvad-vpn/settings.json 0644
+  fi
   sudo udevadm control --reload || true
   sudo systemctl daemon-reload
 }

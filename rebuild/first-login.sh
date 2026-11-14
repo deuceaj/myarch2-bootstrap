@@ -37,6 +37,25 @@ else
   fi
 fi
 
+section "Spotify theme (spicetify)"
+XPUI=/opt/spotify/Apps/xpui/index.html
+if ! command -v spicetify >/dev/null || [[ ! -d /opt/spotify ]]; then
+  warn "Spotify or spicetify not installed — skipped"
+elif grep -q spicetify "$XPUI" 2>/dev/null; then
+  log "Spotify already themed"
+elif [[ ! -f ~/.config/spotify/prefs ]]; then
+  warn "Open Spotify once (and sign in), close it, then re-run this script."
+else
+  pgrep -x spotify >/dev/null && { info "Closing Spotify"; pkill -x spotify; sleep 2; }
+  # The AUR package installs Spotify root-owned; spicetify needs write access.
+  if sudo chmod a+wr /opt/spotify && sudo chmod -R a+wr /opt/spotify/Apps \
+     && spicetify backup apply; then
+    log "Spotify themed (re-run 'spicetify backup apply' after Spotify updates)"
+  else
+    fail "spicetify backup apply failed"
+  fi
+fi
+
 section "Health check"
 "$REBUILD_DIR/doctor.sh" || true
 
@@ -46,8 +65,7 @@ cat <<'EOF'
   [ ] Mullvad: sign in (mullvad account login)       [ ] Tailscale: sudo tailscale up
   [ ] Firefox / Floorp / Chromium: check the profile came back signed in
   [ ] Spotify, NordPass, pCloud, Notion, Discord, Zoom, Claude: sign in
-  [ ] Steam: sign in (then re-run this script once)
-  [ ] spicetify: spicetify backup apply (after Spotify has run once)
+  [ ] Steam / Spotify: if skipped above, open + sign in, quit, re-run this script
   [ ] Change your login password if not done yet: passwd
 EOF
 print_summary

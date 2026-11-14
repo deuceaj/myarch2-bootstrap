@@ -69,6 +69,7 @@ SYSTEM_FILES=(
   /etc/pam.d/greetd
   /etc/greetd/config.toml
   /etc/ufw/user.rules /etc/ufw/user6.rules
+  /etc/mullvad-vpn/settings.json    # auto-connect, LAN sharing, relay prefs (NOT account/device keys)
   /var/lib/noctalia-greeter/
 )
 sudo rsync -a -r --relative --delete "${SYSTEM_FILES[@]}" "$PRIVATE_DIR/system/" 2>&1 | grep -v 'No such file' || true
