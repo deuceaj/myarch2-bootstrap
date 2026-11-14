@@ -66,7 +66,6 @@ cat <<'EOF'
   [ ] Firefox / Floorp / Chromium: check the profile came back signed in
   [ ] Spotify, NordPass, pCloud, Notion, Discord, Zoom, Claude: sign in
   [ ] Steam / Spotify: if skipped above, open + sign in, quit, re-run this script
-  [ ] Change your login password if not done yet: passwd
 EOF
 print_summary
 echo "Log: $LOG"

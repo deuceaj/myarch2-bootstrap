@@ -1,0 +1,5 @@
+# Wallpaper Carousel (yngwe/wallpaperCarousel, Super+W).
+# Point it at the real folder, not the ~/Wallpaper symlink: the overlay's
+# folder model showed nothing through the link after the 2026-11-14 reinstall.
+[plugin_settings."yngwe/wallpaperCarousel"]
+wallpaperDirectory = "/media/Epsilon/deuce/Wallpaper"

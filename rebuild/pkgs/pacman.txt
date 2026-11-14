@@ -6,7 +6,7 @@ base-devel git rsync wget curl unzip unrar less man-db openssh
 nftables cifs-utils ntfs-3g inotify-tools libnotify
 
 # ── umbriel + noctalia desktop (umbriel itself is AUR) ──
-greetd noctalia noctalia-greeter matugen
+greetd noctalia noctalia-greeter matugen quickshell   # quickshell: wallpaper carousel plugin (Super+W)
 xdg-desktop-portal-gtk xdg-desktop-portal-lxqt qt6ct
 kitty alacritty wl-clipboard xdg-utils
 thunar thunar-archive-plugin thunar-media-tags-plugin thunar-shares-plugin thunar-volman

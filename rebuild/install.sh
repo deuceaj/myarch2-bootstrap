@@ -88,6 +88,9 @@ system_files() {
   install_root_file "$SYS/etc/systemd/system/grub-btrfsd.service.d/override.conf" /etc/systemd/system/grub-btrfsd.service.d/override.conf
   install_root_file "$SYS/etc/mullvad-tailscale.nft"                     /etc/mullvad-tailscale.nft
   install_root_file "$SYS/usr/local/bin/sonix-keypad-kick"               /usr/local/bin/sonix-keypad-kick 0755
+  # Scoped polkit rule: no password prompts for greeter sync, disk mounting,
+  # NetworkManager, LACT, input-remapper, Timeshift (pkexec <cmd> still asks)
+  install_root_file "$REBUILD_DIR/files/polkit/49-deuce-nopasswd.rules" /etc/polkit-1/rules.d/49-deuce-nopasswd.rules 0644
   # greetd PAM file = stock + gnome-keyring lines (unlocks the keyring at login)
   install_root_file "$SYS/etc/pam.d/greetd"                              /etc/pam.d/greetd
   # Mullvad preferences (auto-connect, LAN sharing — needed for Tailscale —,
@@ -190,6 +193,7 @@ EOF
     sudo install -m 0644 -o greeter -g greeter "$SYS/var/lib/noctalia-greeter/greeter.toml" /var/lib/noctalia-greeter/greeter.toml
     log "restored greeter.toml (your layout)"
   fi
+  sudo noctalia-greeter passwordless-sync enable "$USER" >/dev/null 2>&1 || true
   # Enable only — NEVER restart greetd from a running session (locks you out).
   sudo systemctl enable greetd.service && log "greetd enabled (takes over after reboot)"
 }

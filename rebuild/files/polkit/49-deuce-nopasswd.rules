@@ -1,0 +1,41 @@
+// Approve these specific admin actions for deuce without a password, only in
+// deuce's own active local session. Everything else — including
+// `pkexec <any command>` and formatting disks — still asks.
+// Installed by rebuild/install.sh to /etc/polkit-1/rules.d/ (mode 0644).
+polkit.addRule(function (action, subject) {
+    if (subject.user !== "deuce" || !subject.local || !subject.active) {
+        return polkit.Result.NOT_HANDLED;
+    }
+    var exact = [
+        "org.noctalia.greeter.sync-appearance",       // greeter Auto-Sync on wallpaper/theme change
+        "io.github.ilya_zlobintsev.LACT.profile-hook",// LACT
+        "inputremapper",                              // input-remapper GUI
+        "in.teejeetech.pkexec.timeshift",             // Timeshift
+        "in.teejeetech.pkexec.timeshift-gtk",
+        "org.kde.kpmcore.externalcommand.init"        // partitionmanager (if ever installed)
+    ];
+    if (exact.indexOf(action.id) >= 0) {
+        return polkit.Result.YES;
+    }
+    // Disks / Thunar: mount, unmount, unlock, eject, power off (not format/modify)
+    var udisks = [
+        "org.freedesktop.udisks2.filesystem-mount",
+        "org.freedesktop.udisks2.filesystem-mount-system",
+        "org.freedesktop.udisks2.filesystem-mount-other-seat",
+        "org.freedesktop.udisks2.filesystem-unmount-others",
+        "org.freedesktop.udisks2.encrypted-unlock",
+        "org.freedesktop.udisks2.encrypted-unlock-system",
+        "org.freedesktop.udisks2.eject-media",
+        "org.freedesktop.udisks2.eject-media-system",
+        "org.freedesktop.udisks2.power-off-drive",
+        "org.freedesktop.udisks2.power-off-drive-system"
+    ];
+    if (udisks.indexOf(action.id) >= 0) {
+        return polkit.Result.YES;
+    }
+    // Wi-Fi, VPN and network settings
+    if (action.id.indexOf("org.freedesktop.NetworkManager.") === 0) {
+        return polkit.Result.YES;
+    }
+    return polkit.Result.NOT_HANDLED;
+});
