@@ -54,6 +54,27 @@ if [[ -r /etc/ufw/user.rules ]] || sudo -n true 2>/dev/null; then
   check "LocalSend port open in ufw" sudo -n grep -q 53317 /etc/ufw/user.rules
 else skip "LocalSend port in ufw (needs sudo: run 'sudo -v' first)"; fi
 
+section "Mullvad + Tailscale together"
+# The conflict seen before: with Mullvad connected, traffic to tailnet devices
+# was dropped. mullvad-tailscale-bypass (nft table) routes it around Mullvad.
+# These checks use real app-style traffic (ICMP to a tailnet IP, MagicDNS),
+# not `tailscale ping`, which works even when apps are blocked.
+if mullvad status 2>/dev/null | grep -q '^Connected' && tailscale status >/dev/null 2>&1; then
+  peer=$(tailscale status --json 2>/dev/null | python3 -I -c '
+import json,sys
+d=json.load(sys.stdin)
+for p in (d.get("Peer") or {}).values():
+    if p.get("Online") and p.get("TailscaleIPs"):
+        print(p["TailscaleIPs"][0], (p.get("DNSName") or "").rstrip(".")); break')
+  if [[ -n $peer ]]; then
+    read -r pip pname <<<"$peer"
+    check "tailnet reachable with Mullvad on (ping $pname)" ping -c1 -W3 "$pip"
+    check "MagicDNS names resolve ($pname)" getent hosts "$pname"
+  else skip "no online tailnet peer to test against"; fi
+  check "Mullvad LAN sharing allowed" bash -c 'mullvad lan get | grep -q allow'
+  check "bypass rules loaded" systemctl is-active mullvad-tailscale-bypass
+else skip "Mullvad and Tailscale not both connected — nothing to test"; fi
+
 section "User services"
 for s in fix-file-dates.path bield-agent.service openrazer-daemon.service bible-dashboard.timer craft-update-check.timer; do
   check "$s enabled" systemctl --user is-enabled "$s"

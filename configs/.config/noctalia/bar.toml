@@ -130,6 +130,13 @@ type = "mera/localsend:widget"
 [widget.remmina]
 type = "rylos/remmina:bar"
 
+# Tray: hide the Mullvad app's icon; the Mullvad bar plugin below controls
+# the VPN instead (via the CLI, so the Mullvad app doesn't need to run).
+# Find IDs: busctl --user get-property org.kde.StatusNotifierWatcher
+#   /StatusNotifierWatcher org.kde.StatusNotifierWatcher RegisteredStatusNotifierItems
+[widget.tray]
+hidden = ["Mullvad VPN_status_icon_1"]
+
 # Tailscale (rylos/tailnet, replaces Trayscale): online hosts with one-click
 # IP/name copy, connect/disconnect, exit nodes, Taildrop. Launcher: /ts-style
 # host search. Operator is already "deuce", so no sudo needed.
