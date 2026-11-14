@@ -1,0 +1,85 @@
+# Paths under $HOME captured by backup-private.sh into the PRIVATE folder on
+# Epsilon (never committed) and restored by install.sh.
+# Directories end with /. Caches are excluded automatically (see backup-private.sh).
+
+# ── shell ──
+.bashrc
+.bash_profile
+.config/bashrc/
+.config/environment.d/
+
+# ── secrets / identity ──
+.ssh/
+.local/.smbcredentials
+.local/.smbcredentials_Retroludas
+.local/share/keyrings/
+
+# ── desktop: umbriel + noctalia ──
+.config/umbriel/
+.config/noctalia/
+.local/state/noctalia/
+.config/vicinae/
+.local/share/vicinae/
+.config/ai-usagebar/
+
+# ── look & feel ──
+.config/gtk-3.0/
+.config/gtk-4.0/
+.gtkrc-2.0
+.config/qt5ct/
+.config/qt6ct/
+.config/lxqt/
+.config/xsettingsd/
+.config/xdg-desktop-portal/
+.themes/
+.local/share/fonts/
+
+# ── COSMIC (Zoom session) ──
+.config/cosmic/
+
+# ── defaults / startup ──
+.config/mimeapps.list
+.config/user-dirs.dirs
+.config/user-dirs.locale
+.config/autostart/
+.config/systemd/user/
+.local/bin/
+.local/share/applications/
+
+# ── apps ──
+.config/kitty/
+.config/alacritty/
+.config/nvim/
+.config/cava/
+.config/btop/
+.config/fastfetch/
+.config/MangoHud/
+.config/lact/
+.config/Thunar/
+.config/xfce4/
+.config/mpv/
+.config/wireplumber/
+.config/input-remapper-2/
+.config/openrazer/
+.config/polychromatic/
+.config/remmina/
+.local/share/remmina/
+.config/spicetify/
+.config/Code/User/
+.config/Vencord/
+.config/obsidian/
+.config/mozilla/
+.config/floorp/
+.config/chromium/
+.config/pcloud/
+.config/Mullvad VPN/
+.config/Moonlight Game Streaming Project/
+.config/Ryujinx/
+.config/EmuDeck/
+
+# ── own services ──
+.local/share/bield-agent/
+.config/bield-agent/
+
+# ── Claude Code settings, skills, memory (no transcripts) ──
+.claude/

@@ -1,0 +1,50 @@
+# Official repo packages (pacman). Verified to exist on 2026-11-13.
+# archinstall's Cosmic profile already brings: cosmic (group), xdg-user-dirs.
+
+# ── base tools ──
+base-devel git rsync wget curl unzip unrar less man-db openssh
+nftables cifs-utils ntfs-3g inotify-tools libnotify
+
+# ── umbriel + noctalia desktop (umbriel itself is AUR) ──
+greetd noctalia noctalia-greeter matugen
+xdg-desktop-portal-gtk xdg-desktop-portal-lxqt qt6ct
+kitty alacritty wl-clipboard xdg-utils
+thunar thunar-archive-plugin thunar-media-tags-plugin thunar-shares-plugin thunar-volman
+tumbler ffmpegthumbnailer file-roller
+gvfs gvfs-smb gvfs-mtp gvfs-afc
+pavucontrol playerctl cava btop fastfetch eza ripgrep fd fzf glances mission-center duf baobab
+adw-gtk-theme papirus-icon-theme
+ttf-jetbrains-mono-nerd noto-fonts noto-fonts-emoji ttf-liberation
+
+# ── kept GNOME bits (standalone apps) ──
+loupe gnome-calculator gnome-disk-utility gnome-keyring
+
+# ── audio ──
+pipewire pipewire-pulse wireplumber
+easyeffects noise-suppression-for-voice
+gst-plugins-good gst-libav
+
+# ── GPU (RX 9060 XT) + gaming ──
+mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-tools libva-utils
+lact
+steam gamemode lib32-gamemode mangohud lib32-mangohud gamescope
+moonlight-qt
+
+# ── network / remote ──
+networkmanager networkmanager-openvpn mullvad-vpn tailscale ufw ufw-extras
+remmina freerdp
+bluez blueman
+
+# ── apps ──
+firefox chromium obsidian discord
+mpv vlc vlc-plugins-all yt-dlp okular foliate gimp gcolor3 sqlitebrowser
+neovim lazygit tree-sitter-cli nodejs npm python-pip python-pipx python-pillow rust cmake
+perl-image-exiftool
+jdk17-openjdk
+android-tools
+
+# ── Razer ──
+linux-headers openrazer-daemon openrazer-driver-dkms
+
+# ── boot / snapshots / system ──
+grub-btrfs os-prober efibootmgr timeshift zram-generator smartmontools cronie tuned-ppd

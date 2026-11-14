@@ -36,3 +36,7 @@
 !configs/.config/cava/
 !configs/.config/cava/**
 configs/.config/cava/themes/noctalia
+# Rebuild kit: install/first-login/doctor scripts, package lists, VM test
+# (reviewed: no secrets; all personal data lives in /media/Epsilon/deuce/private)
+!rebuild/
+!rebuild/**

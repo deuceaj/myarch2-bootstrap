@@ -1,0 +1,36 @@
+# AUR packages (yay). Verified to exist on 2026-11-13. Built one at a time;
+# a failure is recorded and the rest continue. Slow builds are last.
+
+# ── desktop ──
+umbriel-git                       # compositor (pulls xdg-desktop-portal-umbriel-git)
+vicinae-bin                       # launcher (Alt+Space)
+trayscale                         # Tailscale tray icon
+# emote dropped 2026-11-13: AUR pkg broken (checksum); noctalia launcher has an emoji picker
+bibata-cursor-theme-bin           # cursor
+kora-icon-theme                   # icons (LXQt file dialog uses it)
+whitesur-gtk-theme
+otf-sora ttf-symbola ttf-ms-fonts
+
+# ── hardware ──
+input-remapper                    # SONiX keypad -> media keys, Tartarus
+polychromatic                     # Razer GUI
+8bitdo-ultimate-controller-udev
+
+# ── apps ──
+spotify spicetify-cli
+visual-studio-code-bin
+claude-desktop
+nordpass-bin
+pcloud-drive
+floorp-bin
+notion-app-electron
+zoom
+tiny-media-manager
+czkawka-cli-bin
+ai-usagebar-bin
+ocs-url
+emudeck-bin
+wps-office                        # large download
+
+# ── slow builds ──
+ryujinx-git                       # long .NET build
