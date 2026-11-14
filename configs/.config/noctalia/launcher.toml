@@ -1,0 +1,34 @@
+# noctalia launcher — Spotlight-style: a single search field on top with the
+# results underneath, centered, no tabs or buttons. Plugin providers:
+#   /ssh  SSH hosts from ~/.ssh/config (cleboost/ssh-launcher)
+#   /rmn  Remmina profiles (rylos/remmina)
+# Type "/" alone to list every provider.
+# https://docs.noctalia.dev/noctalia/launcher/
+
+[shell.launcher]
+layout        = "simple"   # search field on top + results (560x500)
+categories    = false      # no category chip row, just search
+show_icons    = true
+sort_by_usage = true       # most-used results float to the top
+track_usage   = true
+
+[shell.panel]
+launcher_placement = "floating"
+launcher_position  = "center"
+
+# Open SSH sessions in kitty explicitly.
+[plugin_settings."cleboost/ssh-launcher"]
+terminal = "kitty"
+
+# Other launcher providers (enabled plugins):
+#   /fs    file search (nightwatch75/file-search; needs fzf)
+#   /arch  package updates (yuuto/arch-updater; needs pacman-contrib)
+#   /sh    run a shell command (weinguyen/shell-command)
+[plugin_settings."yuuto/arch-updater"]
+aur_helper       = "yay"
+auto_check_hours = 6   # default 0 = only checks when clicked
+
+
+# LocalSend: name this computer shows up as on the phone.
+[plugin_settings."mera/localsend"]
+alias = "Primus"

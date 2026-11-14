@@ -23,16 +23,16 @@ widget_spacing       = 12
 font_weight          = 500
 
 start  = ["launcher", "workspaces", "active_window"]
-center = ["weather", "clock", "notifications"]   # Glimpse-style centered date/time
-end    = ["tray", "bluetooth", "volume", "control-center"]
+center = ["weather", "clock", "notifications", "divider", "spotify", "audio_visualizer"]   # Glimpse-style centered date/time
+end    = ["remmina", "localsend", "tray", "bluetooth", "volume", "notes"]
 
-# Portrait monitor (HDMI-A-1, 1080 px wide): workspaces, clock, and the
-# system/Claude stats that live off the main bar.
+# Portrait monitor (HDMI-A-1, 1080 px wide): workspaces, system stats, and
+# pending Arch updates + Claude usage on the right.
 [bar.default.monitor.portrait]
 match  = "HDMI-A-1"
 start  = ["workspaces"]
-center = ["clock"]
-end    = ["cpu", "temp", "claude_usage", "volume"]
+center = ["gpu", "temp", "ram", "network_rx"]
+end    = ["arch_updates", "claude_usage"]
 
 # ─── Widgets ───────────────────────────────────────────────────────────────
 
@@ -40,9 +40,42 @@ end    = ["cpu", "temp", "claude_usage", "volume"]
 type = "sysmon"
 stat = "cpu_usage"
 
+# Portrait bar stats: readouts stay on the bar, but clicking any of them opens
+# the nvtop panel instead of each widget's own dropdown.
 [widget.temp]
 type = "sysmon"
 stat = "cpu_temp"
+[widget.temp.actions]
+left = "panel-toggle tordex/nvtop:panel"
+
+[widget.ram]
+type = "sysmon"
+stat = "ram_used"
+[widget.ram.actions]
+left = "panel-toggle tordex/nvtop:panel mem"
+
+[widget.network_rx]
+type = "sysmon"
+stat = "net_rx"
+[widget.network_rx.actions]
+left = "panel-toggle tordex/nvtop:panel"
+
+[widget.control-center]
+glyph = "navigation"
+
+# "|" separator between the notification bell and the Spotify widget.
+[widget.divider]
+type = "text"
+text = "|"
+
+# Spotify now playing: art, scrolling track, prev/play/next
+# (azokyen/spotify-media). Built for Hyprland: the controls work through
+# playerctl, but clicking the art (focus/launch Spotify) does nothing here.
+[widget.spotify]
+type = "azokyen/spotify-media:bar"
+
+[widget.notes]
+type = "noctalia/notes:notes"
 
 [widget.weather]
 show_condition   = false
@@ -72,3 +105,38 @@ type          = "felipeartur/ai-usagebar:bar"
 vendor        = "anthropic"
 visualization = "gauge"
 extras        = "both"
+
+# GPU load as a plain readout matching the others; click opens the nvtop
+# panel (tordex/nvtop plugin must stay enabled; its graphs need python-pillow).
+[widget.gpu]
+type = "sysmon"
+stat = "gpu_usage"
+[widget.gpu.actions]
+left = "panel-toggle tordex/nvtop:panel gpu"
+
+# Pending pacman/AUR/flatpak updates (yuuto/arch-updater plugin); click for
+# the update panel. Also /arch in the launcher.
+[widget.arch_updates]
+type = "yuuto/arch-updater:widget"
+
+# LocalSend (mera/localsend): AirDrop-style sharing with the phone's LocalSend
+# app over Wi-Fi. Click for nearby devices; incoming files land in
+# ~/Downloads/LocalSend. Needs ufw to allow 53317 tcp+udp.
+[widget.localsend]
+type = "mera/localsend:widget"
+
+# Remmina connections (rylos/remmina plugin): click for a list of saved
+# Remmina profiles; also /rmn in the launcher.
+[widget.remmina]
+type = "rylos/remmina:bar"
+
+# Plugin widgets defined but not placed on a bar yet; add a name to a
+# start/center/end list to show it.
+[widget.umbriel_companion]
+type = "noctalia/umbriel-companion:bar"
+
+[widget.xwayland]
+type = "tordex/xwayland:bar"
+
+[widget.monitor_control]
+type = "muhammadessam/umbriel-monitor-control:monitor"

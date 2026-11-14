@@ -7,7 +7,7 @@
 APPS=(
     "spotify|Spotify"
     "kitty --class cava -e cava|cava"
-    "corectrl|org.corectrl.CoreCtrl"
+    "lact gui|io.github.ilya_zlobintsev.LACT"
 )
 
 wait_for_app() {

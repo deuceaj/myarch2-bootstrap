@@ -50,7 +50,7 @@ def wallpaper():
     path = os.environ.get("NOCTALIA_WALLPAPER_PATH", "")
     if path and os.path.isfile(path):
         return path
-    out = run("noctalia", "msg", "wallpaper-get", "DP-1").stdout.strip()
+    out = run("noctalia", "msg", "wallpaper-get", "DP-2").stdout.strip()
     return out if os.path.isfile(out) else ""
 
 

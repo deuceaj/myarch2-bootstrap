@@ -5,8 +5,9 @@
 # https://docs.noctalia.dev/umbriel/workspaces/
 
 # Samsung 34" ultrawide — main monitor, tiling workspaces 1-6
-# 3440x1440 @ 1.25 scale = 2752x1152 logical
-[output.DP-1]
+# 3440x1440 @ 1.25 scale = 2752x1152 logical. On the RX 9060 XT it is DP-2
+# (it was DP-1 on the integrated graphics).
+[output.DP-2]
 mode = "3440x1440@59.973"
 position = [0, 0]
 scale = 1.25

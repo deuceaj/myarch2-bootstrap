@@ -81,6 +81,9 @@ default_fullscreen = true
 [[window_rule]]
 match.app_id = "^steam_app_.*$"
 confine_pointer = true
+# Games (Wine/Proton) ask to swallow all keys; refuse so Mod+ shortcuts
+# (workspace keys, Mod+Shift+Escape release) always work in games.
+allow_shortcuts_inhibit = false
 
 # Keep compositor shortcuts available while a virtual machine window is focused.
 # [[window_rule]]
@@ -171,7 +174,24 @@ default_scrolling_extent = 0.1
 default_focused = false
 
 [[window_rule]]
-match.app_id = "^org[.]corectrl[.]CoreCtrl$"
+match.app_id = "^io[.]github[.]ilya_zlobintsev[.]LACT$"
 default_workspace = "7"
 default_scrolling_extent = 0.3
 default_focused = false
+
+# ==============================================================================
+# Named scratchpads. Defining any removes umbriel's implicit default, so the
+# everyday Mod+S scratchpad is named "general".
+[[scratchpad]]
+name = "general"
+
+# Google Messages for web as an app window (no browser UI), dropped down with
+# Mod+G. The first toggle launches it; texts arrive as noctalia notifications.
+[[scratchpad]]
+name = "messages"
+spawn_when_empty = "chromium --app=https://messages.google.com/web"
+
+[[window_rule]]
+match.app_id = "^chrome-messages[.]google[.]com__web-Default$"
+default_scratchpad = "messages"
+default_floating_size = { width = 0.35, height = 0.85 }

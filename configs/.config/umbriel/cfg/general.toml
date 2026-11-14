@@ -16,12 +16,14 @@ autostart = [
 ]
 # xwayland = false
 # Sharp X11 apps and games on scaled outputs; they see physical resolutions.
-# xwayland_native_resolution = true
+# Games see the ultrawide at its real 3440x1440 instead of the 1.25-scaled
+# 2752x1152 (Cyberpunk otherwise tops out below native).
+xwayland_native_resolution = true
 # Umbriel announces the X11 interface scale and cursor theme through XSETTINGS.
 # Turn this off to run your own manager, such as xsettingsd.
 # xwayland_xsettings = false
 # Select the monitor X11 games use as primary, using a connector or monitor identity from `umbriel outputs`.
-# xwayland_primary_output = "DP-1"
+xwayland_primary_output = "Samsung Electric Company S34C65xV HCNYB00395"
 # NVIDIA outputs without explicit synchronization wait for GPU rendering by default.
 # Disable this workaround if it causes stuttering or frame drops.
 # nvidia_sync_workaround = false

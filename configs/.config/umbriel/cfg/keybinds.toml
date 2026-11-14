@@ -11,7 +11,8 @@
 
 # Applications
 "Mod+Return" = { action = "spawn kitty", repeat = false }
-"Mod+Space" = { action = "spawn vicinae toggle", repeat = false }
+"Mod+Space" = { action = "spawn noctalia msg panel-toggle launcher", repeat = false }  # Spotlight-style; /ssh, /rmn
+"Alt+Space" = { action = "spawn vicinae toggle", repeat = false }
 "Mod+Q" = { action = "window-close", repeat = false }
 "Mod+Shift+Q" = { action = "window-kill", repeat = false }
 
@@ -21,6 +22,9 @@
 "Mod+Shift+E" = { action = "session-quit", repeat = false }
 # Pass Mod combos through to the focused app (VMs, remote desktops); press again to restore.
 "Mod+Escape" = { action = "shortcuts-inhibit-toggle", allow_when_inhibited = true, repeat = false }
+# Release the mouse from a game (Steam games keep the pointer inside them):
+# opens the overview, which frees the pointer. Works even inside a game.
+"Mod+Shift+Escape" = { action = "overview-toggle", allow_when_inhibited = true, repeat = false }
 
 # Applications (ported from niri)
 "Mod+B" = { action = "spawn firefox", repeat = false }
@@ -147,7 +151,7 @@
 "Mod+Alt+P" = { action = "spawn noctalia msg screenshot-window", repeat = false }
 "Mod+Shift+P" = { action = "spawn noctalia msg screenshot-annotate", repeat = false }
 
-# Workspaces: 1-6 on DP-1, 7-0 on HDMI-A-1 (see outputs.toml).
+# Workspaces: 1-6 on DP-2, 7-0 on HDMI-A-1 (see outputs.toml).
 # --name selects by name, so Mod+7 jumps to the portrait monitor's "7".
 # Move the whole workspace, retaining its name, layout, and windows.
 # "Mod+Ctrl+Page_Down" = "workspace-move-to-output-next"
@@ -174,7 +178,10 @@
 "Mod+Shift+0" = "window-move-to-workspace --name 0"
 
 # Scratchpad
-"Mod+Shift+S" = { action = "window-move-to-scratchpad", repeat = false }
-"Mod+S" = "scratchpad-toggle"
-"Mod+Ctrl+S" = { action = "window-restore-from-scratchpad", repeat = false }
-"Mod+Tab" = "scratchpad-focus-next"
+# Named scratchpads (see rules.toml): "general" is the everyday one.
+"Mod+Shift+S" = { action = "window-move-to-scratchpad general", repeat = false }
+"Mod+S" = "scratchpad-toggle general"
+"Mod+Ctrl+S" = { action = "window-restore-from-scratchpad general", repeat = false }
+"Mod+Tab" = "scratchpad-focus-next general"
+# Google Messages drop-down (starts it the first time)
+"Mod+G" = { action = "scratchpad-toggle messages", repeat = false }
