@@ -76,7 +76,7 @@ for p in (d.get("Peer") or {}).values():
 else skip "Mullvad and Tailscale not both connected — nothing to test"; fi
 
 section "User services"
-for s in fix-file-dates.path bield-agent.service openrazer-daemon.service bible-dashboard.timer craft-update-check.timer; do
+for s in fix-file-dates.path bield-agent.service openrazer-daemon.service bible-dashboard.timer; do
   check "$s enabled" systemctl --user is-enabled "$s"
 done
 check "in gamemode + openrazer groups" bash -c 'id -nG | grep -qw gamemode && id -nG | grep -qw openrazer'

@@ -22,7 +22,7 @@ SYSTEM_SERVICES=(NetworkManager bluetooth systemd-resolved lactd mullvad-daemon
                  mullvad-tailscale-bypass tailscaled ufw input-remapper cronie
                  grub-btrfsd fstrim.timer)
 USER_SERVICES=(fix-file-dates.path bield-agent.service openrazer-daemon.service
-               bible-dashboard.timer craft-update-check.timer)
+               bible-dashboard.timer)
 MOUNTS=(/media/Epsilon /media/Steam /media/Nexus /media/Theatrum /media/Retroludus)
 SYS="$PRIVATE_DIR/system"
 

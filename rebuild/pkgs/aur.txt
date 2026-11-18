@@ -32,5 +32,11 @@ ocs-url
 emudeck-bin
 # wps-office removed 2026-11-14 (not used)
 
+# ── ArtCraft (storytold) — native AUR -bin builds of the developer's GitHub
+#    releases; menu entries keep the Adobe/Microsoft names + icons ──
+photocraft-bin vectorcraft-bin designcraft-bin    # Photoshop, Illustrator, InDesign
+deckcraft-bin wordcraft-bin gridcraft-bin         # PowerPoint, Word, Excel
+pdfcraft-bin                                      # Acrobat
+
 # ── slow builds ──
 ryujinx-git                       # long .NET build
