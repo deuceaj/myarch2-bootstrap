@@ -37,7 +37,7 @@ while IFS=$'\t' read -r name target; do
 done < "$PRIVATE_DIR/info/home-symlinks.tsv"
 
 section "Boot"
-check "os-prober enabled in GRUB" grep -q '^GRUB_DISABLE_OS_PROBER=false' /etc/default/grub
+check "Windows boot entry source (custom entry or os-prober)" bash -c '[[ -x /etc/grub.d/35_windows_hackintosh ]] || grep -q "^GRUB_DISABLE_OS_PROBER=false" /etc/default/grub'
 if [[ -r /boot/grub/grub.cfg ]] || sudo -n true 2>/dev/null; then
   hw "Windows entry in GRUB menu" sudo -n grep -qi windows /boot/grub/grub.cfg
 else skip "Windows entry in GRUB menu (needs sudo: run 'sudo -v' first)"; fi

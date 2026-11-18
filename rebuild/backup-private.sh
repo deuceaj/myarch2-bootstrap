@@ -58,6 +58,7 @@ fi
 section "System files → $PRIVATE_DIR/system (sudo)"
 SYSTEM_FILES=(
   /etc/fstab /etc/default/grub /etc/kernel/cmdline
+  /etc/grub.d/35_windows_hackintosh   # custom Windows entry (replaces os-prober)
   /etc/lact/config.yaml
   /etc/udev/rules.d/99-disable-onboard-bluetooth.rules
   /etc/udev/rules.d/99-sonix-keypad-kick.rules

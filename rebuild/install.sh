@@ -135,10 +135,18 @@ boot_config() {
   fi
   $found || fail "boot: no GRUB, UKI cmdline or systemd-boot found — add ${KERNEL_PARAMS[*]} by hand"
   if [[ -f /etc/default/grub ]]; then
+    # Custom Windows entry (made 2026-11-16, "Windows Hackintosh (Crucial 240GB
+    # SATA)"): restore it and turn os-prober OFF so Windows isn't listed twice.
+    # Without it, fall back to os-prober.
+    local prober=false
+    if [[ -f "$SYS/etc/grub.d/35_windows_hackintosh" ]]; then
+      install_root_file "$SYS/etc/grub.d/35_windows_hackintosh" /etc/grub.d/35_windows_hackintosh 0755
+      prober=true
+    fi
     if grep -q '^#\?GRUB_DISABLE_OS_PROBER' /etc/default/grub; then
-      sudo sed -i 's/^#\?GRUB_DISABLE_OS_PROBER.*/GRUB_DISABLE_OS_PROBER=false/' /etc/default/grub
+      sudo sed -i "s/^#\\?GRUB_DISABLE_OS_PROBER.*/GRUB_DISABLE_OS_PROBER=$prober/" /etc/default/grub
     else
-      echo 'GRUB_DISABLE_OS_PROBER=false' | sudo tee -a /etc/default/grub >/dev/null
+      echo "GRUB_DISABLE_OS_PROBER=$prober" | sudo tee -a /etc/default/grub >/dev/null
     fi
     sudo grub-mkconfig -o /boot/grub/grub.cfg || fail "grub-mkconfig"
     $IS_VM || sudo grep -q -i windows /boot/grub/grub.cfg || fail "GRUB: no Windows entry found (is sda connected? Part 2 done?)"
