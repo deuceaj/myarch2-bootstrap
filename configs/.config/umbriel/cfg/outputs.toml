@@ -4,7 +4,7 @@
 
 [output."Dell Inc. DELL SE2417HG 7DWHJ78F084I"]
 position = [0, 0]
-workspaces = ["11", "12", "13", "14", "15"]
+workspaces = ["11", "12"]
 
 [output."Dell Inc. DELL SE2417HG 7DWHJ79S0FQI"]
 mode = "1920x1080@60"

@@ -63,7 +63,7 @@
 "Mod+J" = "window-focus-down"
 "Mod+K" = "window-focus-up"
 "Mod+L" = "window-focus-right"
-"Mod+Grave" = "window-focus-next"   # was Mod+F1 (now workspace 11)
+"Mod+F1" = "window-focus-next"
 "Mod+Home" = "column-focus-first"
 "Mod+End" = "column-focus-last"
 "Mod+WheelRight" = "window-focus-right"
@@ -102,10 +102,11 @@
 "Mod+Ctrl+Right" = "window-modify-width-right 0.05"
 "Mod+Ctrl+Up" = "window-modify-height-down -0.05"
 "Mod+Ctrl+Down" = "window-modify-height-down 0.05"
-"Mod+Minus" = "window-modify-width-right -0.05"
-"Mod+Equal" = "window-modify-width-right 0.05"
-"Mod+Shift+Minus" = "window-modify-height-down -0.05"
-"Mod+Shift+Equal" = "window-modify-height-down 0.05"
+# Resize moved here from Mod+-/= (those now go to workspaces 11/12)
+"Mod+Ctrl+Minus" = "window-modify-width-right -0.05"
+"Mod+Ctrl+Equal" = "window-modify-width-right 0.05"
+"Mod+Ctrl+Shift+Minus" = "window-modify-height-down -0.05"
+"Mod+Ctrl+Shift+Equal" = "window-modify-height-down 0.05"
 # Fine-tune: add Alt to any resize bind for 1% steps
 "Mod+Ctrl+Alt+Left" = "window-modify-width-right -0.01"
 "Mod+Ctrl+Alt+Right" = "window-modify-width-right 0.01"
@@ -177,18 +178,13 @@
 "Mod+Shift+9" = "window-move-to-workspace --name 9"
 "Mod+Shift+0" = "window-move-to-workspace --name 0"
 
-# Left Dell (serial ...F084I): workspaces 11-15 on Super+F1-F5,
-# Super+Shift+F1-F5 sends the focused window there.
-"Mod+F1" = "workspace-switch --name 11"
-"Mod+F2" = "workspace-switch --name 12"
-"Mod+F3" = "workspace-switch --name 13"
-"Mod+F4" = "workspace-switch --name 14"
-"Mod+F5" = "workspace-switch --name 15"
-"Mod+Shift+F1" = "window-move-to-workspace --name 11"
-"Mod+Shift+F2" = "window-move-to-workspace --name 12"
-"Mod+Shift+F3" = "window-move-to-workspace --name 13"
-"Mod+Shift+F4" = "window-move-to-workspace --name 14"
-"Mod+Shift+F5" = "window-move-to-workspace --name 15"
+# Left Dell: workspaces 11 and 12 on the keys after 0 (- and =),
+# Shift sends the focused window there, same as 1-0.
+"Mod+Minus" = "workspace-switch --name 11"
+"Mod+Equal" = "workspace-switch --name 12"
+"Mod+Shift+Minus" = "window-move-to-workspace --name 11"
+"Mod+Shift+Equal" = "window-move-to-workspace --name 12"
+
 
 # Scratchpad
 # Named scratchpads (see rules.toml): "general" is the everyday one.
