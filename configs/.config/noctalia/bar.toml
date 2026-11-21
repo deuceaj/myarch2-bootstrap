@@ -24,7 +24,7 @@ font_weight          = 500
 
 start  = ["launcher", "workspaces", "active_window"]
 center = ["weather", "clock", "notifications", "divider", "spotify", "audio_visualizer"]   # Glimpse-style centered date/time
-end    = ["remmina", "localsend", "tailnet", "mullvad", "displays", "lock_keys", "tray", "bluetooth", "volume", "notes"]
+end    = ["remmina", "localsend", "tailnet", "mullvad", "displays", "tray", "network", "bluetooth", "volume", "notes"]
 
 # Portrait monitor (HDMI-A-1, 1080 px wide): workspaces, system stats, and
 # pending Arch updates + Claude usage on the right.
@@ -32,7 +32,7 @@ end    = ["remmina", "localsend", "tailnet", "mullvad", "displays", "lock_keys",
 match  = "HDMI-A-1"
 start  = ["workspaces"]
 center = ["gpu", "temp", "ram", "network_rx"]
-end    = ["arch_updates", "claude_usage"]
+end    = ["arch_updates", "claude_usage", "claude_app"]
 
 # ─── Widgets ───────────────────────────────────────────────────────────────
 
@@ -135,7 +135,33 @@ type = "rylos/remmina:bar"
 # Find IDs: busctl --user get-property org.kde.StatusNotifierWatcher
 #   /StatusNotifierWatcher org.kde.StatusNotifierWatcher RegisteredStatusNotifierItems
 [widget.tray]
-hidden = ["Mullvad VPN_status_icon_1"]
+# Hidden here because a bar widget covers them: Mullvad (plugin), blueman
+# (bluetooth widget), nm-applet (network widget), Claude (portrait-bar button).
+# The applets keep running (nm-applet still answers Wi-Fi/VPN password prompts).
+hidden = ["Mullvad VPN_status_icon_1", "blueman", "nm-applet", "Claude_status_icon_1"]
+# Everything else (Razer, pCloud, Vicinae, Spotify...) sits behind one chevron.
+drawer = true
+
+# Bluetooth: left-click opens blueman; right-click keeps the power toggle.
+[widget.bluetooth.actions]
+left = "exec blueman-manager"
+
+# Network: left-click = noctalia's Network panel (clean nm-applet equivalent);
+# right-click = full connection editor (instead of the default disconnect).
+[widget.network]
+show_label = false   # icon only (label was the interface name enp14s0)
+vpn_status = "hidden"  # Mullvad has its own bar widget; show the plain network icon
+
+[widget.network.actions]
+right = "exec nm-connection-editor"
+
+# Claude desktop app on the portrait bar, next to the usage star.
+[widget.claude_app]
+type = "custom_button"
+custom_image = "/usr/share/icons/hicolor/256x256/apps/claude-desktop.png"
+tooltip = "Claude"
+[widget.claude_app.actions]
+left = "exec claude-desktop --password-store=basic"
 
 # Tailscale (rylos/tailnet, replaces Trayscale): online hosts with one-click
 # IP/name copy, connect/disconnect, exit nodes, Taildrop. Launcher: /ts-style
