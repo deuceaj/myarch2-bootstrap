@@ -14,11 +14,14 @@ fi
 log "umbriel is running"
 
 section "Monitor names"
-mapfile -t want < <(grep -oE '^\[output\.[^].]+\]' ~/.config/umbriel/cfg/outputs.toml | sed -E 's/^\[output\.(.*)\]$/\1/; s/"//g')
-have=$(umbriel outputs --json | python3 -c 'import json,sys; d=json.load(sys.stdin); d=d if isinstance(d,list) else d.get("outputs",[]); print("\n".join(o.get("name","") for o in d))')
+# outputs.toml headers are either connectors ([output.DP-2]) or monitor
+# identities ([output."Dell Inc. DELL SE2417HG 7DWHJ78F084I"], written by the
+# umbriel-displays plugin). Match each against umbriel's name or config_name.
+mapfile -t want < <(sed -nE 's/^\[output\.(.+)\]$/\1/p' ~/.config/umbriel/cfg/outputs.toml | sed -E 's/^"(.*)"$/\1/')
+have=$(umbriel outputs --json | python3 -I -c 'import json,sys; d=json.load(sys.stdin); d=d if isinstance(d,list) else d.get("outputs",[]); print("\n".join(x for o in d for x in (o.get("name",""), o.get("config_name",""))))')
 for w in "${want[@]}"; do
-  if grep -qx "$w" <<<"$have"; then log "$w found"
-  else fail "config expects output $w but umbriel sees: $(tr '\n' ' ' <<<"$have")— rename it in ~/.config/umbriel/cfg/outputs.toml, noctalia desktop.toml + settings"; fi
+  if grep -qxF "$w" <<<"$have"; then log "$w found"
+  else fail "config expects monitor '$w' but it isn't connected — check ~/.config/umbriel/cfg/outputs.toml"; fi
 done
 $IS_VM && warn "VM: monitor names will differ from Primus (expected here)"
 

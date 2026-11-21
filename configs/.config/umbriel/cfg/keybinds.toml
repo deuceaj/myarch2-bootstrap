@@ -63,7 +63,7 @@
 "Mod+J" = "window-focus-down"
 "Mod+K" = "window-focus-up"
 "Mod+L" = "window-focus-right"
-"Mod+F1" = "window-focus-next"
+"Mod+Grave" = "window-focus-next"   # was Mod+F1 (now workspace 11)
 "Mod+Home" = "column-focus-first"
 "Mod+End" = "column-focus-last"
 "Mod+WheelRight" = "window-focus-right"
@@ -176,6 +176,19 @@
 "Mod+Shift+8" = "window-move-to-workspace --name 8"
 "Mod+Shift+9" = "window-move-to-workspace --name 9"
 "Mod+Shift+0" = "window-move-to-workspace --name 0"
+
+# Left Dell (serial ...F084I): workspaces 11-15 on Super+F1-F5,
+# Super+Shift+F1-F5 sends the focused window there.
+"Mod+F1" = "workspace-switch --name 11"
+"Mod+F2" = "workspace-switch --name 12"
+"Mod+F3" = "workspace-switch --name 13"
+"Mod+F4" = "workspace-switch --name 14"
+"Mod+F5" = "workspace-switch --name 15"
+"Mod+Shift+F1" = "window-move-to-workspace --name 11"
+"Mod+Shift+F2" = "window-move-to-workspace --name 12"
+"Mod+Shift+F3" = "window-move-to-workspace --name 13"
+"Mod+Shift+F4" = "window-move-to-workspace --name 14"
+"Mod+Shift+F5" = "window-move-to-workspace --name 15"
 
 # Scratchpad
 # Named scratchpads (see rules.toml): "general" is the everyday one.
