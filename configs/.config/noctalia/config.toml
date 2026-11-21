@@ -4,3 +4,7 @@ polkit_agent = true
 # On-screen popup when Caps Lock / Num Lock change (bar: lock_keys widget)
 [osd.kinds]
 lock_keys = true
+
+# Screenshots (Super+P and friends) go here, not the Pictures root
+[shell.screenshot]
+directory = "/home/deuce/Pictures/Screenshots"

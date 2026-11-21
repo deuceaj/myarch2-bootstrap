@@ -220,6 +220,12 @@ home_restore() {
     ln -s "$target" "$HOME/$name" && log "~/$name -> $target"
     [[ -e "$target" ]] || warn "~/$name points to $target, which isn't there yet"
   done < "$PRIVATE_DIR/info/home-symlinks.tsv"
+  # xdg-user-dirs points a folder at $HOME/ if it didn't exist yet (the Epsilon
+  # links come later), which sent screenshots/downloads into ~ (2026-11-21).
+  for kv in DOWNLOAD:Downloads DOCUMENTS:Documents MUSIC:Music PICTURES:Pictures VIDEOS:Videos; do
+    xdg-user-dirs-update --set "${kv%%:*}" "$HOME/${kv#*:}"
+  done
+  mkdir -p "$HOME/Pictures/Screenshots" 2>/dev/null || true
   # Cursor: Bibata everywhere (GTK, X11 apps, COSMIC)
   mkdir -p ~/.icons/default ~/.config/environment.d
   printf '[Icon Theme]\nInherits=Bibata-Modern-Classic\n' > ~/.icons/default/index.theme
@@ -272,7 +278,7 @@ firewall() {
 defaults() {
   section "Default apps (so COSMIC's apps don't take over)"
   xdg-mime default thunar.desktop inode/directory
-  xdg-mime default firefox.desktop x-scheme-handler/http x-scheme-handler/https text/html
+  xdg-mime default brave-browser.desktop x-scheme-handler/http x-scheme-handler/https text/html
   mkdir -p ~/.local/state/rebuild
   cp ~/.config/mimeapps.list ~/.local/state/rebuild/mimeapps.list.expected
   log "mimeapps.list pinned (doctor.sh warns if COSMIC changes it)"

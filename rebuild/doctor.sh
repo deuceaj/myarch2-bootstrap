@@ -90,7 +90,8 @@ check "Bibata cursor installed" test -d /usr/share/icons/Bibata-Modern-Classic
 # Only flag what matters: a COSMIC app becoming a default. Apps adding their
 # own link handlers (e.g. nordpass://) are normal and not reported.
 check "no COSMIC app took over a default" bash -c '! grep -q "com.system76.Cosmic" ~/.config/mimeapps.list'
-check "web links open in Firefox" bash -c '[[ $(xdg-mime query default x-scheme-handler/https) == firefox.desktop ]]'
+check "web links open in a browser (Brave/Firefox/Floorp/Chromium)" bash -c '[[ $(xdg-mime query default x-scheme-handler/https) =~ ^(brave-browser|firefox|floorp|chromium)\.desktop$ ]]'
+check "XDG folders not pointing at bare \$HOME" bash -c '! grep -qE "^XDG_(DOWNLOAD|DOCUMENTS|MUSIC|PICTURES|VIDEOS)_DIR=\"\\\$HOME/\"" ~/.config/user-dirs.dirs'
 check "folders open in Thunar" bash -c '[[ $(xdg-mime query default inode/directory) == thunar.desktop ]]'
 
 section "Steam"
