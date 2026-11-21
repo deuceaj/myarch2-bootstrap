@@ -1,2 +1,6 @@
 [shell]
 polkit_agent = true
+
+# On-screen popup when Caps Lock / Num Lock change (bar: lock_keys widget)
+[osd.kinds]
+lock_keys = true
