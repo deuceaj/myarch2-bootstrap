@@ -8,9 +8,12 @@
 # 3440x1440 @ 1.25 scale = 2752x1152 logical. On the RX 9060 XT it is DP-2
 # (it was DP-1 on the integrated graphics).
 [output.DP-2]
-mode = "3440x1440@59.973"
+# 100 Hz needs the monitor OSD set to DisplayPort Ver. 1.2 (1.1 caps it at 60).
+mode = "3440x1440@99.982"
 position = [0, 0]
 scale = 1.25
+# FreeSync (48-100 Hz) only for fullscreen windows like games; avoids desktop flicker.
+vrr = "fullscreen"
 focus_at_startup = true
 workspaces = ["1", "2", "3", "4", "5", "6"]
 
@@ -25,7 +28,6 @@ scale = 1.0
 transform = "90"
 workspaces = ["7", "8", "9", "0"]
 workspace_axis = "horizontal"
+layout.scrolling.default_extent_fraction = 0.5
 
 # Height of each new stacked window (fraction of the screen).
-[output.HDMI-A-1.layout.scrolling]
-default_extent_fraction = 0.5

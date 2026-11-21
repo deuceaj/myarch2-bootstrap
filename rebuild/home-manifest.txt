@@ -70,6 +70,7 @@
 .config/mozilla/
 .config/floorp/
 .config/chromium/
+.config/BraveSoftware/
 .config/pcloud/
 .config/Mullvad VPN/
 .config/Moonlight Game Streaming Project/

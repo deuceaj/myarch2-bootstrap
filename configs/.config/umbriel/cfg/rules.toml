@@ -190,8 +190,11 @@ name = "general"
 [[scratchpad]]
 name = "messages"
 spawn_when_empty = "chromium --app=https://messages.google.com/web"
+hide_when_empty = true
 
 [[window_rule]]
 match.app_id = "^chrome-messages[.]google[.]com__web-Default$"
 default_scratchpad = "messages"
-default_floating_size = { width = 0.35, height = 0.85 }
+# Drop-down under the right end of the noctalia bar: 1/5 screen wide.
+default_floating_size = { width = 0.2, height = 0.75 }
+default_position = { x = 8, y = 8, anchor = "top_right" }

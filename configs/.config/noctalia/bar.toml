@@ -24,7 +24,7 @@ font_weight          = 500
 
 start  = ["launcher", "workspaces", "active_window"]
 center = ["weather", "clock", "notifications", "divider", "spotify", "audio_visualizer"]   # Glimpse-style centered date/time
-end    = ["remmina", "localsend", "tailnet", "mullvad", "tray", "bluetooth", "volume", "notes"]
+end    = ["remmina", "localsend", "tailnet", "mullvad", "displays", "tray", "bluetooth", "volume", "notes"]
 
 # Portrait monitor (HDMI-A-1, 1080 px wide): workspaces, system stats, and
 # pending Arch updates + Claude usage on the right.
@@ -155,5 +155,7 @@ type = "noctalia/umbriel-companion:bar"
 [widget.xwayland]
 type = "tordex/xwayland:bar"
 
-[widget.monitor_control]
-type = "muhammadessam/umbriel-monitor-control:monitor"
+# Monitors (prponkshe/umbriel-displays): click for resolution, refresh,
+# scale, rotation and arrangement. Settings: displays.toml.
+[widget.displays]
+type = "prponkshe/umbriel-displays:bar"

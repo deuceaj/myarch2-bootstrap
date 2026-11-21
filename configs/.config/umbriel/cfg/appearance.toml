@@ -126,3 +126,7 @@ curve = "spring:1,1000"
 
 [animation.overview]
 curve = "spring:1,900"
+
+# No dark tint behind scratchpads (Mod+G Messages, Mod+S); default is 0.8.
+[animation.scratchpad]
+dim = 0.0

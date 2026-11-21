@@ -27,7 +27,7 @@
 "Mod+Shift+Escape" = { action = "overview-toggle", allow_when_inhibited = true, repeat = false }
 
 # Applications (ported from niri)
-"Mod+B" = { action = "spawn firefox", repeat = false }
+"Mod+B" = { action = "spawn brave", repeat = false }
 "Mod+C" = { action = "spawn code", repeat = false }
 "Mod+E" = { action = "spawn thunar", repeat = false }
 "Mod+O" = { action = "spawn obsidian", repeat = false }

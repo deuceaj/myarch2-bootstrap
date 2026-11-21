@@ -1,0 +1,7 @@
+# Monitor control: prponkshe/umbriel-displays manages umbriel's [output.*]
+# sections in this file (resolution, refresh, scale, rotation, arrangement,
+# per-output workspaces). nwg-displays can't drive umbriel (sway/Hyprland/
+# niri/mango only). Rewrites drop comments; the commented original is
+# ~/.config/umbriel/cfg/outputs.toml.bak-2026-11-21-pre-displays
+[plugin_settings."prponkshe/umbriel-displays"]
+outputs_path = "~/.config/umbriel/cfg/outputs.toml"

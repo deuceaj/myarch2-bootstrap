@@ -23,6 +23,7 @@ claude-desktop
 nordpass-bin
 pcloud-drive
 floorp-bin
+brave-bin                         # Super+B browser
 notion-app-electron
 zoom
 tiny-media-manager
