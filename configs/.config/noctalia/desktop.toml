@@ -1,4 +1,4 @@
-# Noctalia desktop widgets on the ultrawide (DP-2 is 2752x1152 logical).
+# Noctalia desktop widgets on the ultrawide (DP-1 since the 2026-11-22 port swap; 2752x1152 logical).
 # Fine-tune positions with `noctalia msg desktop-widgets-edit` (drag, then
 # Done); the editor saves its changes to ~/.local/state/noctalia/settings.toml.
 # https://docs.noctalia.dev/noctalia/desktop/widgets/
@@ -13,7 +13,7 @@ widget_order   = ["audio_bars", "clock_main"]
 # The text scales with the box: 512x132 is twice the 256x66 auto-fit size.
 [desktop_widgets.widget.clock_main]
 type       = "clock"
-output     = "DP-2"
+output     = "DP-1"
 cx         = 1376.0
 cy         = 173.0
 box_width  = 512.0
@@ -30,7 +30,7 @@ shadow      = false  # a solid shadow under the text blocks the wallpaper
 # 10% of its height (115 px), centered.
 [desktop_widgets.widget.audio_bars]
 type       = "audio_visualizer"
-output     = "DP-2"
+output     = "DP-1"
 cx         = 1376.0
 cy         = 1094.0
 box_width  = 2202.0

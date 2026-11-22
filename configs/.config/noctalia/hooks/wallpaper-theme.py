@@ -50,8 +50,23 @@ def wallpaper():
     path = os.environ.get("NOCTALIA_WALLPAPER_PATH", "")
     if path and os.path.isfile(path):
         return path
-    out = run("noctalia", "msg", "wallpaper-get", "DP-2").stdout.strip()
+    out = run("noctalia", "msg", "wallpaper-get", ultrawide_output()).stdout.strip()
     return out if os.path.isfile(out) else ""
+
+
+def ultrawide_output():
+    """Connector of the Samsung ultrawide, found by serial so a port swap
+    (DP-1 <-> DP-2, 2026-11-22) doesn't break theming."""
+    import json
+    try:
+        data = json.loads(run("umbriel", "outputs", "--json").stdout)
+        outs = data if isinstance(data, list) else data.get("outputs", [])
+        for o in outs:
+            if "HCNYB00395" in (o.get("config_name") or ""):
+                return o["name"]
+    except Exception:
+        pass
+    return "DP-1"
 
 
 # ── Dominant colors ──────────────────────────────────────────────────────────

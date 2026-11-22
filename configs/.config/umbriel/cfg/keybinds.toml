@@ -152,7 +152,7 @@
 "Mod+Alt+P" = { action = "spawn noctalia msg screenshot-window", repeat = false }
 "Mod+Shift+P" = { action = "spawn noctalia msg screenshot-annotate", repeat = false }
 
-# Workspaces: 1-6 on DP-2, 7-0 on HDMI-A-1 (see outputs.toml).
+# Workspaces: 1-6 on the ultrawide, 7-0 on the portrait Dell, 11-12 on the left Dell (outputs.toml matches monitors by serial, so port swaps are safe).
 # --name selects by name, so Mod+7 jumps to the portrait monitor's "7".
 # Move the whole workspace, retaining its name, layout, and windows.
 # "Mod+Ctrl+Page_Down" = "workspace-move-to-output-next"
