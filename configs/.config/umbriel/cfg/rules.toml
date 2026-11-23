@@ -39,7 +39,7 @@ default_pinned = true
 
 # Translucent apps (blur is already on for every window above)
 [[window_rule]]
-match.app_id = ["^com[.]microsoft[.]VSCode$", "^code$", "^thunar$", "^Thunar$", "^kitty$"]
+match.app_id = ["^com[.]microsoft[.]VSCode$", "^code$", "^thunar$", "^Thunar$", "^kitty$", "^arch-updater$"]
 opacity = 0.75
 
 [[window_rule]]

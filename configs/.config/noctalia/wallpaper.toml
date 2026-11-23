@@ -3,3 +3,11 @@
 # folder model showed nothing through the link after the 2026-11-14 reinstall.
 [plugin_settings."yngwe/wallpaperCarousel"]
 wallpaperDirectory = "/media/Epsilon/deuce/Wallpaper"
+# Start the overlay in the background at login and pre-load every thumbnail, so
+# the first Super+W shows wallpapers instead of a black screen while ~80 large
+# images decode (cold start used to take 2-3 presses). cacheSize >= image count.
+preload   = true
+cacheSize = 100
+# Pick per monitor: Super+W applies only to the screen it opened on, so the
+# portrait can keep a tall image and the ultrawide a wide one (2026-11-23).
+applyToAllMonitors = false
