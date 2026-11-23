@@ -11,7 +11,7 @@ autostart = [
   "noctalia",
   "vicinae server",
   "/home/deuce/.config/umbriel/scripts/bluetooth-reconnect.sh",
-  "/home/deuce/.config/umbriel/scripts/portrait-startup.sh",
+  "spotify",   # lands on workspace 11 via rules.toml
 ]
 # xwayland = false
 # Sharp X11 apps and games on scaled outputs; they see physical resolutions.

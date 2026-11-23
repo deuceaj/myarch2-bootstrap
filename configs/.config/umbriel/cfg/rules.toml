@@ -157,26 +157,11 @@ match.namespace = "^noctalia-(notification|dock|panel|attached-panel|osd)$"
 blur_optimized = false
 
 # ==============================================================================
-# Portrait monitor startup stack (workspace 7 on HDMI-A-1)
-# Opened in order by scripts/portrait-startup.sh; heights are fractions of the
-# portrait screen (umbriel's minimum is 0.1). Replaces niri's
-# right-monitor-startup.sh (60/5/35).
+# Spotify opens on workspace 11 (left Dell) at login, without taking focus.
+# (cava + LACT GUI no longer autostart; the LACT daemon still runs the fans.)
 [[window_rule]]
 match.app_id = "^Spotify$"
-default_workspace = "7"
-default_scrolling_extent = 0.6
-default_focused = false
-
-[[window_rule]]
-match.app_id = "^cava$"
-default_workspace = "7"
-default_scrolling_extent = 0.1
-default_focused = false
-
-[[window_rule]]
-match.app_id = "^io[.]github[.]ilya_zlobintsev[.]LACT$"
-default_workspace = "7"
-default_scrolling_extent = 0.3
+default_workspace = "11"
 default_focused = false
 
 # ==============================================================================
